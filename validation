@@ -1,0 +1,100 @@
+<?php 
+$array_a = ["(",")","(",")","(",")"];
+$array_b = ["(","(",")","(",")","(",")","("];
+
+//Спосіб 1 - перевірить на парність масиви
+echo "<h2>Спосіб 1</h2>";
+if((count($array_a) % 2 == 0) && (count($array_b) % 2 == 0)) {
+    echo "valid <br/>";
+} else {
+    echo "invalid <br/>";
+}
+echo "<p>Окремо перевіряємо кожен з масивів</p>";
+if(count($array_a) % 2 == 0) {
+    echo "array_a - valid <br/>";
+} else {
+    echo "array_a - invalid <br/>";
+}
+
+if(count($array_b) % 2 == 0) {
+    echo "array_b - valid <br/>";
+} else {
+    echo "array_b - invalid <br/>";
+}
+
+//Спосіб 2 - подивитись з яких дужок починаються масиви
+//якщо масиви починаються з відкриття дужок, перебираємо ці масиви, записуємо к-ть відкритих/закритих дужок в нові масиви
+//потім перевіряємо чи співпадає к-ть відкритих з закритими дужками
+echo "<h2>Спосіб 2</h2>";
+if ($array_a[0] == "(" && $array_b[0] == "(") {
+    $array_open_a = [];
+    $array_close_a = [];
+    foreach($array_a as $value_a) {
+        if ($value_a == "(") {
+            array_push($array_open_a, $value);
+        } else {
+            array_push($array_close_a, $value);
+        }
+    }
+    if(count($array_open_a) == count($array_close_a)) {
+        echo "array_a - valid <br/>";
+    } else {
+        echo "array_a - invalid <br/>";
+    }
+    
+    $array_open_b = [];
+    $array_close_b = [];
+    foreach($array_b as $value_b) {
+        if ($value_b == "(") {
+            array_push($array_open_b, $value);
+        } else {
+            array_push($array_close_b, $value);
+        }
+    }
+    if(count($array_open_b) == count($array_close_b)) {
+        echo "array_b - valid <br/>";
+    } else {
+        echo "array_b - invalid <br/>";
+    }
+} else {
+    echo "invalid <br/>";
+}
+
+echo "<p>Окремо перевіряємо умови для кожного масиву</p>";
+if ($array_a[0] == "(") {
+    $array_open_a = [];
+    $array_close_a = [];
+    foreach($array_a as $value_a) {
+        if ($value_a == "(") {
+            array_push($array_open_a, $value);
+        } else {
+            array_push($array_close_a, $value);
+        }
+    }
+    if(count($array_open_a) == count($array_close_a)) {
+        echo "array_a - valid <br/>";
+    } else {
+        echo "array_a - invalid <br/>";
+    }    
+} else {
+    echo "array_a - invalid <br/>";
+}
+
+if ($array_b[0] == "(") {        
+    $array_open_b = [];
+    $array_close_b = [];
+    foreach($array_b as $value_b) {
+        if ($value_b == "(") {
+            array_push($array_open_b, $value);
+        } else {
+            array_push($array_close_b, $value);
+        }
+    }
+    if(count($array_open_b) == count($array_close_b)) {
+        echo "array_b - valid <br/>";
+    } else {
+        echo "array_b - invalid <br/>";
+    }
+} else {
+    echo "array_b - invalid <br/>";
+}
